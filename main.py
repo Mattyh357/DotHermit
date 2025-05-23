@@ -1,6 +1,11 @@
 # dotdeploy core starter
+# git remote set-url origin git@github.com:Mattyh357/DotHermit.git
+from xml.etree.ElementInclude import include
 
+# TODO fix
 import os
+PROJECT_PATH = os.path.expanduser("~/Dropbox/0Repos/Python/DotHermit/")
+
 import socket
 import hashlib
 from pathlib import Path
@@ -51,29 +56,33 @@ def print_tracked_info():
 
 import subprocess
 
-def check_for_updates():
-    try:
-        # Fetch latest changes (no merge)
-        subprocess.run(["git", "fetch"], check=True)
-
-        # Check if local is behind
-        result = subprocess.run(
-            ["git", "status", "-uno"],
-            capture_output=True,
-            text=True
-        )
-
-        if "Your branch is behind" in result.stdout:
-            print("A newer version of DotDeploy is available.")
-            print("Run: git pull")
-        else:
-            print("DotDeploy is up to date.")
-    except Exception as e:
-        print(f"Error checking updates: {e}")
 
 
 
+
+from GitHelper import GitHubHandler
+
+
+
+#tets
 # === MAIN ===
 if __name__ == "__main__":
-	check_for_updates()
-	# print_tracked_info()
+	handler = GitHubHandler(PROJECT_PATH)
+
+	if not handler.is_git_installed():
+		print("Git is not installed!")
+		exit(1)
+
+	if handler.check_for_updates():
+		print("Updates are available. Pulling...")
+		# print(handler.pull_updates())
+	else:
+		print("No updates found.")
+
+	# To upload:
+	# handler.stage_all_changes()
+	# handler.commit_changes("Your commit message")
+	# handler.push_changes()
+
+
+
