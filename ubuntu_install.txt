@@ -1,0 +1,119 @@
+Required .files:
+- .zshrc
+- .xsessionrc
+- .config/
+ - - alacritty
+ - - i3
+ - - polybar
+ - - rofi
+
+
+# make script that makes sh files exacutable
+sudo chmod +x ~/.config/polybar/*.sh
+
+# Update
+sudo apt-get update
+sudo apt-get upgrade
+
+
+# Mandatory stuff
+sudo apt install git autoconf automake pkg-config m4 libxcb-util0-dev make curl
+
+# Environment (I3, rofi, shell)
+sudo apt-get install zsh i3 polybar dmenu alacritty feh rofi-dev qalc libtool nemo pulseaudio-utils mate-polkit vim notify-osd xfce4-clipman
+
+
+# oh-my-zsh + powerlevel10k
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/MichaelAquilina/zsh-auto-notify.git $ZSH_CUSTOM/plugins/auto-notify
+
+
+
+# SOFTWARE - Must have :)
+sudo apt install ranger mc flameshot cpu-x htop btm
+
+# KEYRING - KINDA IMPORTANT :D TODO - sort out!!! if not working
+pkexec echo "This is a test"
+
+
+# SSH and stuff
+sudo apt install openssh-server
+
+
+# INTALL FOLDER
+mkdir ~/0INSTALL && cd ~/0INSTALL
+
+# Rofi - calc
+git clone https://github.com/svenstaro/rofi-calc.git
+cd rofi-calc
+mkdir m4
+autoreconf -i
+./configure
+make
+sudo make install
+
+--------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------
+
+# Keyboard and mouse
+sudo apt install solaar piper
+
+sudo add-apt-repository universe
+sudo apt install libfuse2t64
+-->https://github.com/Dygmalab/Bazecor/releases
+./Bazecor-1.7.0-x64.AppImage --appimage-extract
+sudo chown root:root squashfs-root/usr/lib/bazecor/chrome-sandbox
+sudo chmod 4755 squashfs-root/usr/lib/bazecor/chrome-sandbox
+./squashfs-root/AppRun\
+MOVE squashfs to ~/Dygma
+
+
+
+
+
+# Headphones -
+sudo pacman -S cmake hidapi
+git clone https://github.com/Sapd/HeadsetControl && cd HeadsetControl
+mkdir build && cd build
+cmake ..
+make
+sudo make install
+headsetcontrol
+
+
+
+# TailScale
+curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/plucky.noarmor.gpg | sudo tee /usr/share/keyrings/tailscale-archive-keyring.gpg >/dev/null
+curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/plucky.tailscale-keyring.list | sudo tee /etc/apt/sources.list.d/tailscale.list
+sudo apt-get update
+sudo apt install tailscale
+sudo systemctl enable --now tailscaled
+sudo tailscale up
+
+
+AppStore:
+- kolourpaint
+- kate
+- onlyoffice
+- discord
+
+From web:
+- Chrome
+
+
+
+
+TODO
+dropbox!!!
+Steam
+vpn
+
+
+
+
+
+

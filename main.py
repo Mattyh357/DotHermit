@@ -249,10 +249,10 @@ if __name__ == "__main__":
         exit(1)
 
     # Pull latest repo
-    if git_handler.check_for_updates():
-        print("Updates are available. Pulling...")
-        # print(handler.pull_updates())
-        # TODO error handling
+    # if git_handler.check_for_updates():
+    #     print("Updates are available. Pulling...")
+    #     # print(handler.pull_updates())
+    #     # TODO error handling
 
 	# Check dot files
     repo_changed = check_dot_files()
@@ -277,4 +277,4 @@ if __name__ == "__main__":
 # TODO force push arg
 # TODO force pull
 # TODO help argument
-#
+# TODO Create directory when touch new file
